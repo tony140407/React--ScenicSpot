@@ -1,7 +1,9 @@
 import React from "react"
-
+import { useDispatch, useSelector } from "react-redux"
+import { callModalData } from "../redux/actions/themeAction"
 function ScenicSpotCard(props) {
-  // console.log(props.picture["PictureDescription1"])
+  const dispatch = useDispatch()
+  const scenicSpots = useSelector((state) => state.scenicSpots)
   let tagElements = []
   props.tag.forEach((eachTag, index) => {
     let tagClass = tegClassProduce(eachTag)
@@ -25,13 +27,25 @@ function ScenicSpotCard(props) {
       //   return "1"
     }
   }
+  function propsPassData() {
+    dispatch(callModalData(props.index))
+  }
   return (
-    <li className="ticketCard col-4">
+    <li
+      className="ticketCard col-4"
+      onClick={propsPassData}
+      data-bs-toggle="modal"
+      data-bs-target="#cardModal"
+    >
       <div className="ticketCard-img">
         <a href="#">
-          <img className="img-fluid" src={props.url} alt={props.alt} />
+          <img
+            // onError={(e) => console.log(e)}
+            className="img-fluid"
+            src={props.url}
+            alt={props.alt}
+          />
         </a>
-        {/* <div className="ticketCard-region">{props.type}</div> */}
         <div className="tagContainer">{tagElements}</div>
       </div>
       <div className="ticketCard-content">
@@ -43,22 +57,9 @@ function ScenicSpotCard(props) {
           </h3>
           <p className="ticketCard-description">{props.description}</p>
         </div>
-        <div className="ticketCard-info">
-          <p className="ticketCard-num">
-            <span>
-              <i className="fas fa-exclamation-circle"></i>
-            </span>
-            剩下最後{" "}
-            <span id="ticketCard-num" className="text-info">
-              {" "}
-              87{" "}
-            </span>{" "}
-            組
-          </p>
-          <p className="ticketCard-price">
-            {props.town}
-            {/* TWD <span id="ticketCard-price">$1400</span> */}
-          </p>
+        <div className="d-flex justify-content-between">
+          <p className="text-secondary">{props.town}</p>
+          <p className="text-dark pointer">(點擊卡片以查看更多)</p>
         </div>
       </div>
     </li>

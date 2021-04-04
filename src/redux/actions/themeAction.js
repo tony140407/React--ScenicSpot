@@ -30,3 +30,9 @@ export const setUrl = () => {
     type: "SET_URL",
   }
 }
+export const callModalData = (dataIndex) => {
+  return {
+    type: "CALL_MODAL_DATA",
+    dataIndex,
+  }
+}

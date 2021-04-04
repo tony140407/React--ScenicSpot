@@ -38,10 +38,7 @@ export default function apiDataProcess(item) {
     return item.Address.slice(0, 3)
   }
   const imgNotDefine = () => {
-    if (!item.Picture.PictureUrl1) {
-      return replaceImg
-    }
-    return item.Picture.PictureUrl1
+    return !item.Picture.PictureUrl1 ? replaceImg : item.Picture.PictureUrl1
   }
 
   return {

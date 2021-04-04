@@ -4,6 +4,7 @@ const initialState = {
   preCity: "",
   city: "",
   url: `https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot?$top=30&$format=JSON`,
+  modalDataIndex: undefined,
 }
 
 const reducer = (state = initialState, action) => {
@@ -45,6 +46,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         url: `https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot?$top=30&$skip=${state.skipNum}&$format=JSON`,
+      }
+    case "CALL_MODAL_DATA":
+      return {
+        ...state,
+        modalDataIndex: action.dataIndex,
       }
 
     default:

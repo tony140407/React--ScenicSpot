@@ -3,6 +3,8 @@ import { scenicCardFactory } from "./helpers/scenicCardFactory"
 import { useDispatch, useSelector } from "react-redux"
 import { changePreCity, apiAddData } from "../redux/actions/themeAction"
 import axiosGetData from "./helpers/axiosGetData"
+// import { Modal } from "bootstrap"
+import CardModal from "./CardModal"
 function RegionList() {
   const dispatch = useDispatch()
   let [scenicCards, setScenicCards] = useState([])
@@ -19,7 +21,6 @@ function RegionList() {
     }
     const elements = scenicCardFactory(data)
     if (preCity != city) {
-      console.log("不一樣")
       setScenicCards(elements)
       dispatch(changePreCity())
     } else {
@@ -30,7 +31,8 @@ function RegionList() {
   }, [url])
   return (
     <div className="bg-light py-5">
-      <section className="container px-5">
+      <CardModal />
+      <section className="container">
         <ul className="ticketCard-area row g-0 list-unstyled">{scenicCards}</ul>
       </section>
       {isGone && <p className="h1 text-center">Gone. It's all gone.</p>}
