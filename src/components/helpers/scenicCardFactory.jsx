@@ -5,14 +5,14 @@ import apiDataProcess from "./apiDataProcess"
 export const scenicCardFactory = (list) => {
   let liList = []
   list.forEach((item) => {
-    const { description, tags, town } = apiDataProcess(item)
+    const { description, tags, town, img } = apiDataProcess(item)
     liList.push(
       <ScenicSpotCard
         key={item.ID}
         name={item.Name}
         description={description}
         alt={item.Picture.PictureDescription1}
-        url={item.Picture.PictureUrl1}
+        url={img}
         tag={tags}
         town={town}
       />

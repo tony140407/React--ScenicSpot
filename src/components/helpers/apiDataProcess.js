@@ -1,4 +1,4 @@
-// import TW_ZIP from "../../../public/GeoJSON/TW_ZIP.json"
+import replaceImg from "../../../public/img/replaceImg.jpg"
 export default function apiDataProcess(item) {
   const descriptionSlice = () => {
     if (item.Description) {
@@ -37,6 +37,17 @@ export default function apiDataProcess(item) {
     }
     return item.Address.slice(0, 3)
   }
+  const imgNotDefine = () => {
+    if (!item.Picture.PictureUrl1) {
+      return replaceImg
+    }
+    return item.Picture.PictureUrl1
+  }
 
-  return { description: descriptionSlice(), tags: tagList(), town: town() }
+  return {
+    description: descriptionSlice(),
+    tags: tagList(),
+    town: town(),
+    img: imgNotDefine(),
+  }
 }

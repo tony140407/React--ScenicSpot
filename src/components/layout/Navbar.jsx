@@ -6,6 +6,7 @@ import { Dropdown } from "bootstrap"
 function Navbar() {
   const dispatch = useDispatch()
   let [btn, setBtn] = useState([])
+  const city = useSelector((state) => state.city)
   useEffect(() => {
     let btnArray = []
     let cityArr = Object.keys(cityName)
@@ -14,17 +15,21 @@ function Navbar() {
       let enCityName = cityName[eachCity]
       btnArray.push(
         <li key={eachCity}>
-          <a className="dropdown-item" href="#" onClick={() => dispatch(changeCity(enCityName))}>
+          <a
+            className={"dropdown-item " + (city == enCityName ? "active" : "")}
+            href="#"
+            onClick={() => dispatch(changeCity(enCityName))}
+          >
             {eachCity}
           </a>
         </li>
       )
     })
     setBtn(btnArray)
-  }, [])
+  }, [city])
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <div className="container-fluid">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+      <div className="container">
         <a className="navbar-brand" href="#">
           Navbar
         </a>
@@ -40,17 +45,7 @@ function Navbar() {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
-                Home
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                Link
-              </a>
-            </li>
+          <ul className="navbar-nav  ms-auto mb-2 mb-lg-0">
             <div className="dropdown">
               <button
                 className="btn btn-secondary dropdown-toggle"
@@ -59,34 +54,14 @@ function Navbar() {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Dropdown button
+                切換各縣市
               </button>
               <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 {btn}
-                {/* <li>
-                  <a className="dropdown-item" href="#">
-                    Action
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Another action
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Something else here
-                  </a>
-                </li> */}
               </ul>
             </div>
-            <li className="nav-item">
-              <a className="nav-link disabled" href="#" tabIndex="-1" aria-disabled="true">
-                Disabled
-              </a>
-            </li>
           </ul>
-          <form className="d-flex">
+          {/* <form className="d-flex">
             <input
               className="form-control me-2"
               type="search"
@@ -96,7 +71,7 @@ function Navbar() {
             <button className="btn btn-outline-success" type="submit">
               Search
             </button>
-          </form>
+          </form> */}
         </div>
       </div>
     </nav>
