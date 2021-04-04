@@ -1,5 +1,27 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
+import cityName from "../../../public/GeoJSON/CH-EN_TW_CITY.json"
+import { useDispatch, useSelector } from "react-redux"
+import { changeCity } from "../../redux/actions/themeAction"
+import { Dropdown } from "bootstrap"
 function Navbar() {
+  const dispatch = useDispatch()
+  let [btn, setBtn] = useState([])
+  useEffect(() => {
+    let btnArray = []
+    let cityArr = Object.keys(cityName)
+
+    cityArr.forEach((eachCity) => {
+      let enCityName = cityName[eachCity]
+      btnArray.push(
+        <li key={eachCity}>
+          <a className="dropdown-item" href="#" onClick={() => dispatch(changeCity(enCityName))}>
+            {eachCity}
+          </a>
+        </li>
+      )
+    })
+    setBtn(btnArray)
+  }, [])
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
@@ -36,12 +58,12 @@ function Navbar() {
                 id="dropdownMenuButton1"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
-                // onClick={dropdownClick}
               >
                 Dropdown button
               </button>
               <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li>
+                {btn}
+                {/* <li>
                   <a className="dropdown-item" href="#">
                     Action
                   </a>
@@ -55,7 +77,7 @@ function Navbar() {
                   <a className="dropdown-item" href="#">
                     Something else here
                   </a>
-                </li>
+                </li> */}
               </ul>
             </div>
             <li className="nav-item">

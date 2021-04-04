@@ -4,8 +4,8 @@ import "./index.css"
 import App from "./App"
 import configureStore from "./redux/store/configureStore"
 import { Provider } from "react-redux"
-// import * as Popper from "@popperjs/core"
-// import { Dropdowns } from "bootstrap"
+// import bootstrap from "../node_modules/bootstrap/dist/js/bootstrap.bundle.js"
+// window.bootstrap = bootstrap
 const store = configureStore()
 
 ReactDOM.render(
