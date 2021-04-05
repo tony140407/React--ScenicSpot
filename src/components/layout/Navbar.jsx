@@ -20,7 +20,7 @@ function Navbar() {
             to={enCityName}
             className={"dropdown-item " + (city == enCityName ? "active" : "")}
             href="#"
-            onClick={() => dispatch(changeCity(enCityName))}
+            // onClick={() => dispatch(changeCity(enCityName))}
           >
             {eachCity}
           </Link>
