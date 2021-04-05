@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 
-import cityName from "../../../public/GeoJSON/CH-EN_TW_CITY.json"
+import cityName from "../../assets/json/CH-EN_TW_CITY.json"
 import { Dropdown } from "bootstrap"
 function Navbar() {
   const dispatch = useDispatch()

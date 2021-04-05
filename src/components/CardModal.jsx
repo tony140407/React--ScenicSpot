@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { Modal } from "bootstrap"
 import { useDispatch, useSelector } from "react-redux"
-import replaceImg from "../../public/img/replaceImg.jpg"
+import replaceImg from "../assets/img/replaceImg.jpg"
 function cardModal() {
   // const dispatch = useDispatch()
   const scenicSpots = useSelector((state) => state.scenicSpots)

@@ -1,4 +1,4 @@
-import replaceImg from "../../../../public/img/replaceImg.jpg"
+import replaceImg from "../../../assets/img/replaceImg.jpg"
 export default function apiDataProcess(item) {
   const descriptionSlice = () => {
     if (item.Description) {
