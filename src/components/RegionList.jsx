@@ -11,6 +11,15 @@ function RegionList() {
       <Switch>
         <Route key="otherCity" path="/scenicSpot/:cityName" component={ScenicCardFactory} />
         <Route key="index" path="/scenicSpot" component={ScenicCardFactory} />
+        <Route
+          key="firstPage"
+          path="/"
+          component={() => {
+            return (
+              <p className="text-center">請點選右上按鈕 或 網址列後方加上 /scenicSpot 做切換</p>
+            )
+          }}
+        />
         {/* index放下面，以防換成 city 時 仍是index */}
       </Switch>
     </div>

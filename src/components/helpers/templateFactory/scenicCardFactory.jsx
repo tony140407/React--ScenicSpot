@@ -70,7 +70,7 @@ export const ScenicCardFactory = (props) => {
   }, [url])
 
   return (
-    <section>
+    <section className="container">
       <ul className="ticketCard-area row g-0 list-unstyled">{scenicCards}</ul>
       {isGone && <p className="h1 text-center my-5 py-5">Gone. It's all gone.</p>}
     </section>

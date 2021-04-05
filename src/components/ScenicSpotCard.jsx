@@ -20,8 +20,14 @@ function ScenicSpotCard(props) {
         return "1"
       case tagName == "自然風景類":
         return "2"
-      default:
+      case tagName == "藝術類":
         return "3"
+      case tagName == "生態類":
+        return "4"
+      case tagName == "文化類":
+        return "5"
+      default:
+        return "none"
       // case tagName === "國家風景區類":
       //   return "1"
     }
