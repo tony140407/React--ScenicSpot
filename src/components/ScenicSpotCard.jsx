@@ -1,9 +1,8 @@
 import React from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { callModalData } from "../redux/actions/themeAction"
 function ScenicSpotCard(props) {
   const dispatch = useDispatch()
-  const scenicSpots = useSelector((state) => state.scenicSpots)
   let tagElements = []
   props.tag.forEach((eachTag, index) => {
     let tagClass = tegClassProduce(eachTag)

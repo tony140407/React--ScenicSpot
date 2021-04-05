@@ -1,12 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import {
-  setUrl,
-  initStateForNewCity,
-  addSkipNum,
-  changePreCity,
-} from "../../../redux/actions/themeAction"
-import axiosGetData from "./axiosGetData"
+import { setUrl, addSkipNum } from "../../../redux/actions/themeAction"
 
 export const detectScroll = () => {
   const dispatch = useDispatch()
@@ -26,7 +20,6 @@ export const detectScroll = () => {
   // 若到底部，則改變url
   useEffect(() => {
     if (isBottom === false) return // 避免首次執行
-    console.log("到底了!!")
     dispatch(addSkipNum())
     dispatch(setUrl())
   }, [isBottom])

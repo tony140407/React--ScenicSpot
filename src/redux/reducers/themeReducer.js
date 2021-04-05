@@ -21,12 +21,6 @@ const reducer = (state = initialState, action) => {
         ...state,
         scenicSpots: data,
       }
-    case "INIT_STATE_FOR_NEW_CITY":
-      return {
-        ...state,
-        scenicSpots: [],
-        skipNum: 0,
-      }
     case "ADD_SKIP_NUM":
       console.log(`skip改變~~ ${state.skipNum + 30}`)
       return {
@@ -39,9 +33,10 @@ const reducer = (state = initialState, action) => {
         preCity: state.city,
       }
     case "CHANGE_CITY":
-      console.log(`city改變~~ ${action.payload}`)
       return {
         ...state,
+        scenicSpots: [],
+        skipNum: 0,
         city: action.payload,
       }
     case "SET_URL":

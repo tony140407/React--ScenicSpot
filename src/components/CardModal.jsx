@@ -3,7 +3,7 @@ import { Modal } from "bootstrap"
 import { useDispatch, useSelector } from "react-redux"
 import replaceImg from "../../public/img/replaceImg.jpg"
 function cardModal() {
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
   const scenicSpots = useSelector((state) => state.scenicSpots)
   const modalDataIndex = useSelector((state) => state.modalDataIndex)
   let [scenicCardData, setScenicCardData] = useState({ Name: "" })

@@ -2,13 +2,7 @@ import React, { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import ScenicSpotCard from "../../ScenicSpotCard"
 import apiDataProcess from "../js/apiDataProcess"
-import {
-  changeCity,
-  changePreCity,
-  initStateForNewCity,
-  setUrl,
-  apiAddData,
-} from "../../../redux/actions/themeAction"
+import { changeCity, changePreCity, setUrl, apiAddData } from "../../../redux/actions/themeAction"
 import axiosGetData from "../js/axiosGetData"
 export const ScenicCardFactory = (props) => {
   const dispatch = useDispatch()
@@ -21,7 +15,6 @@ export const ScenicCardFactory = (props) => {
 
   // router 改變 也改變city
   const { cityName } = props.match.params
-  console.log(cityName)
   useEffect(() => {
     if (cityName == city) return // 重複點選
     if (!cityName) {
@@ -35,7 +28,6 @@ export const ScenicCardFactory = (props) => {
     }
     // 新選擇一個城市
     dispatch(changeCity(cityName))
-    dispatch(initStateForNewCity())
     dispatch(setUrl())
   }, [cityName])
 
@@ -80,7 +72,7 @@ export const ScenicCardFactory = (props) => {
   return (
     <section>
       <ul className="ticketCard-area row g-0 list-unstyled">{scenicCards}</ul>
-      {isGone && <p className="h1 text-center">Gone. It's all gone.</p>}
+      {isGone && <p className="h1 text-center my-5 py-5">Gone. It's all gone.</p>}
     </section>
   )
 }
