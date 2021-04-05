@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
 import cityName from "../../../public/GeoJSON/CH-EN_TW_CITY.json"
 import { useDispatch, useSelector } from "react-redux"
 import { changeCity } from "../../redux/actions/themeAction"
@@ -15,13 +16,14 @@ function Navbar() {
       let enCityName = cityName[eachCity]
       btnArray.push(
         <li key={eachCity}>
-          <a
+          <Link
+            to={enCityName}
             className={"dropdown-item " + (city == enCityName ? "active" : "")}
             href="#"
             onClick={() => dispatch(changeCity(enCityName))}
           >
             {eachCity}
-          </a>
+          </Link>
         </li>
       )
     })

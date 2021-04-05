@@ -1,4 +1,5 @@
 import React from "react"
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
 import "./assets/scss/all.scss"
 
 import Navbar from "./components/layout/Navbar"
@@ -12,16 +13,18 @@ function App() {
   detectScrollAndGetNewData()
   conditionForUrlChange()
   return (
-    <div className="App">
-      <Navbar />
-      <Header className="" />
-      <main className="mb-5">
-        <SelectRegion />
-        <RegionList />
-      </main>
+    <Router>
+      <div className="App">
+        <Navbar />
+        <Header className="" />
+        <main className="mb-5">
+          <SelectRegion />
+          <RegionList />
+        </main>
 
-      <svg id="svg" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"></svg>
-    </div>
+        <svg id="svg" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"></svg>
+      </div>
+    </Router>
   )
 }
 
