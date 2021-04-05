@@ -17,6 +17,7 @@ export const ScenicCardFactory = (props) => {
   const url = useSelector((state) => state.url)
   const preCity = useSelector((state) => state.preCity)
   const city = useSelector((state) => state.city)
+  const skipNum = useSelector((state) => state.skipNum)
 
   // router 改變 也改變city
   const { cityName } = props.match.params
@@ -45,7 +46,7 @@ export const ScenicCardFactory = (props) => {
   function templateToList(data) {
     let liList = []
     data.forEach((item, index) => {
-      const { description, tags, town, img } = apiDataProcess(item)
+      const { description, tags, town, img, totalIndex } = apiDataProcess(item, index)
       liList.push(
         <ScenicSpotCard
           key={item.ID}
@@ -55,7 +56,7 @@ export const ScenicCardFactory = (props) => {
           url={img}
           tag={tags}
           town={town}
-          index={index}
+          index={index + skipNum}
         />
       ) //regionsData={item} 逞成各屬性 如 NAME ID...
     })
