@@ -4,9 +4,9 @@ export const apiAddData = (newData) => {
     newData,
   }
 }
-export const initSkipNum = () => {
+export const initStateForNewCity = () => {
   return {
-    type: "INIT_SKIP_NUM",
+    type: "INIT_STATE_FOR_NEW_CITY",
   }
 }
 export const addSkipNum = () => {

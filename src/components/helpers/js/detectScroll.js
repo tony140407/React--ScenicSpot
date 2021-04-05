@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { setUrl, initSkipNum, addSkipNum, changePreCity } from "../../../redux/actions/themeAction"
+import {
+  setUrl,
+  initStateForNewCity,
+  addSkipNum,
+  changePreCity,
+} from "../../../redux/actions/themeAction"
 import axiosGetData from "./axiosGetData"
 
 export const detectScrollAndGetNewData = () => {
@@ -23,22 +28,21 @@ export const detectScrollAndGetNewData = () => {
     if (isBottom === false) return // 避免首次執行
     console.log("到底了!!")
     dispatch(addSkipNum())
-    // dispatch(changeCity("Taoyuan"))
     dispatch(setUrl())
   }, [isBottom])
 }
 export const conditionForUrlChange = () => {
-  const dispatch = useDispatch()
-  const preCity = useSelector((state) => state.preCity)
-  const city = useSelector((state) => state.city)
-  // 若city，則改變url
-  useEffect(() => {
-    if (city == false) return // 避免首次執行
-    dispatch(initSkipNum())
-    dispatch(setUrl())
-  }, [city])
+  // const dispatch = useDispatch()
+  // const preCity = useSelector((state) => state.preCity)
+  // const city = useSelector((state) => state.city)
+  // // 若city，則改變url
   // useEffect(() => {
-  //   dispatch(initSkipNum())
+  //   if (city == false) return // 避免首次執行
+  //   dispatch(initStateForNewCity())
+  //   dispatch(setUrl())
+  // }, [city])
+  // useEffect(() => {
+  //   dispatch(initStateForNewCity())
   //   dispatch(setUrl())
   // }, [preCity == city])
 }

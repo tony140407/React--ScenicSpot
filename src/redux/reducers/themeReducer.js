@@ -3,20 +3,28 @@ const initialState = {
   skipNum: 0,
   preCity: "",
   city: "",
-  url: `https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot?$top=30&$format=JSON`,
+  url: ``,
   modalDataIndex: undefined,
 }
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case "API_ADD_DATA":
-      return {
-        ...state,
-        scenicSpots: state.scenicSpots.concat(action.newData),
+      let data
+      // 城市一樣,資料累加; 城市不同,array放新資料
+      if (state.city != state.preCity) {
+        data = action.newData
+      } else {
+        data = state.scenicSpots.concat(action.newData)
       }
-    case "INIT_SKIP_NUM":
       return {
         ...state,
+        scenicSpots: data,
+      }
+    case "INIT_STATE_FOR_NEW_CITY":
+      return {
+        ...state,
+        scenicSpots: [],
         skipNum: 0,
       }
     case "ADD_SKIP_NUM":

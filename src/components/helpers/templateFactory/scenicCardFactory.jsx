@@ -2,7 +2,13 @@ import React, { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import ScenicSpotCard from "../../ScenicSpotCard"
 import apiDataProcess from "../js/apiDataProcess"
-import { changeCity, changePreCity, setUrl, apiAddData } from "../../../redux/actions/themeAction"
+import {
+  changeCity,
+  changePreCity,
+  initStateForNewCity,
+  setUrl,
+  apiAddData,
+} from "../../../redux/actions/themeAction"
 import axiosGetData from "../js/axiosGetData"
 export const ScenicCardFactory = (props) => {
   const dispatch = useDispatch()
@@ -16,13 +22,23 @@ export const ScenicCardFactory = (props) => {
   const { cityName } = props.match.params
   console.log(cityName)
   useEffect(() => {
-    if (cityName == city) return
+    // if (city == "" && !cityName) {
+    //   dispatch(setUrl())
+    //   return
+    // }
+    if (cityName == city) return // 重複點選
     if (!cityName) {
+      if (preCity == "" && city == "") {
+        dispatch(setUrl()) // 第一次init
+        return
+      }
       dispatch(changeCity(""))
       dispatch(setUrl())
       return
     }
+    // 新選擇一個城市
     dispatch(changeCity(cityName))
+    dispatch(initStateForNewCity())
     dispatch(setUrl())
   }, [cityName])
 
@@ -47,6 +63,7 @@ export const ScenicCardFactory = (props) => {
   }
 
   useEffect(async () => {
+    if (url == "") return
     let data = await axiosGetData(url)
     if (!data.length) {
       setIsGone(true)
@@ -55,12 +72,12 @@ export const ScenicCardFactory = (props) => {
     const elements = templateToList(data)
     if (preCity != city) {
       setScenicCards(elements)
+      dispatch(apiAddData(data))
       dispatch(changePreCity())
     } else {
       setScenicCards(scenicCards.concat(elements))
+      dispatch(apiAddData(data))
     }
-
-    dispatch(apiAddData(data))
   }, [url])
 
   return (

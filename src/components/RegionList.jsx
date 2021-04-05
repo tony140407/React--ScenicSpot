@@ -37,15 +37,12 @@ function RegionList() {
   return (
     <div className="bg-light py-5">
       <CardModal />
-      <section className="container">
-        <ul className="ticketCard-area row g-0 list-unstyled">
-          <Switch>
-            <Route key="otherCity" path="/:cityName" component={ScenicCardFactory} />
-            <Route key="index" path="" component={ScenicCardFactory} />
-          </Switch>
-        </ul>
-      </section>
-      {isGone && <p className="h1 text-center">Gone. It's all gone.</p>}
+
+      <Switch>
+        <Route key="otherCity" path="/:cityName" component={ScenicCardFactory} />
+        <Route key="index" path="" component={ScenicCardFactory} />
+      </Switch>
+      {/* {isGone && <p className="h1 text-center">Gone. It's all gone.</p>} */}
     </div>
   )
 }
