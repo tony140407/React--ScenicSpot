@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react"
-import { scenicCardFactory } from "./helpers/scenicCardFactory"
+import { scenicCardFactory } from "./helpers/templateFactory/scenicCardFactory"
 import { useDispatch, useSelector } from "react-redux"
 import { changePreCity, apiAddData } from "../redux/actions/themeAction"
-import axiosGetData from "./helpers/axiosGetData"
+import axiosGetData from "./helpers/js/axiosGetData"
 // import { Modal } from "bootstrap"
 import CardModal from "./CardModal"
 function RegionList() {

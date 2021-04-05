@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { setUrl, initSkipNum, addSkipNum, changePreCity } from "../../redux/actions/themeAction"
-import axiosGetData from "../helpers/axiosGetData"
+import { setUrl, initSkipNum, addSkipNum, changePreCity } from "../../../redux/actions/themeAction"
+import axiosGetData from "./axiosGetData"
 
 export const detectScrollAndGetNewData = () => {
   const dispatch = useDispatch()

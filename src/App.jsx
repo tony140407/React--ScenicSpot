@@ -7,7 +7,7 @@ import Header from "./components/layout/Header"
 
 import SelectRegion from "./components/SelectRegion"
 import RegionList from "./components/RegionList"
-import { detectScrollAndGetNewData, conditionForUrlChange } from "./components/helpers/detectScroll"
+import { detectScrollAndGetNewData, conditionForUrlChange } from "./components/helpers/js/detectScroll"
 
 function App() {
   detectScrollAndGetNewData()

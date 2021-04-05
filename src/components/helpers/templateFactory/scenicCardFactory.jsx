@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import ScenicSpotCard from "../ScenicSpotCard"
-import apiDataProcess from "./js/apiDataProcess"
+import React from "react"
+import ScenicSpotCard from "../../ScenicSpotCard"
+import apiDataProcess from "../js/apiDataProcess"
 
 export const scenicCardFactory = (list) => {
-  const dispatch = useDispatch()
-  let [scenicCards, setScenicCards] = useState([])
   let liList = []
   list.forEach((item, index) => {
     const { description, tags, town, img } = apiDataProcess(item)
