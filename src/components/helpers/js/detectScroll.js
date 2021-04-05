@@ -8,7 +8,7 @@ import {
 } from "../../../redux/actions/themeAction"
 import axiosGetData from "./axiosGetData"
 
-export const detectScrollAndGetNewData = () => {
+export const detectScroll = () => {
   const dispatch = useDispatch()
   const [scrollTop, setScrollTop] = useState(0)
   const [isBottom, setIsBottom] = useState(false)
@@ -30,19 +30,4 @@ export const detectScrollAndGetNewData = () => {
     dispatch(addSkipNum())
     dispatch(setUrl())
   }, [isBottom])
-}
-export const conditionForUrlChange = () => {
-  // const dispatch = useDispatch()
-  // const preCity = useSelector((state) => state.preCity)
-  // const city = useSelector((state) => state.city)
-  // // 若city，則改變url
-  // useEffect(() => {
-  //   if (city == false) return // 避免首次執行
-  //   dispatch(initStateForNewCity())
-  //   dispatch(setUrl())
-  // }, [city])
-  // useEffect(() => {
-  //   dispatch(initStateForNewCity())
-  //   dispatch(setUrl())
-  // }, [preCity == city])
 }

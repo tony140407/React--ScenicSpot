@@ -1,4 +1,3 @@
-import { useDispatch, useSelector } from "react-redux"
 import replaceImg from "../../../../public/img/replaceImg.jpg"
 export default function apiDataProcess(item) {
   const descriptionSlice = () => {

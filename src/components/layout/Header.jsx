@@ -6,7 +6,6 @@ function Header() {
       <div className="container border-bottom border-secondary border-5 rounded">
         <img src={LetsTravel} className="" alt="logo" />
       </div>
-      {/* <img src={LetsTravel} className="" alt="logo" /> */}
     </header>
   )
 }

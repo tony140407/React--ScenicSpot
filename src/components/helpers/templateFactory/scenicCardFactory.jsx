@@ -23,10 +23,6 @@ export const ScenicCardFactory = (props) => {
   const { cityName } = props.match.params
   console.log(cityName)
   useEffect(() => {
-    // if (city == "" && !cityName) {
-    //   dispatch(setUrl())
-    //   return
-    // }
     if (cityName == city) return // 重複點選
     if (!cityName) {
       if (preCity == "" && city == "") {

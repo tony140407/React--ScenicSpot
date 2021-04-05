@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react"
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
-import cityName from "../../../public/GeoJSON/CH-EN_TW_CITY.json"
 import { useDispatch, useSelector } from "react-redux"
-import { changeCity } from "../../redux/actions/themeAction"
+
+import cityName from "../../../public/GeoJSON/CH-EN_TW_CITY.json"
 import { Dropdown } from "bootstrap"
 function Navbar() {
   const dispatch = useDispatch()
@@ -17,10 +17,9 @@ function Navbar() {
       btnArray.push(
         <li key={eachCity}>
           <Link
-            to={enCityName}
+            to={`/scenicSpot/${enCityName}`}
             className={"dropdown-item " + (city == enCityName ? "active" : "")}
             href="#"
-            // onClick={() => dispatch(changeCity(enCityName))}
           >
             {eachCity}
           </Link>
