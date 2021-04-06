@@ -41,25 +41,25 @@
 
 ### 初次進入及變化網址時的Url刷新
 src > components > helpers > templateFactory > scenicCardFactory.jsx
-![](https://i.imgur.com/OEnpkyc.png)
+![](https://i.imgur.com/tJrE6sx.png)
+
 
 初次載入 及 網址列的 cityName 改變時執行
-* 改變 redux 內的 city
-* 設置 redux 內的 url
+* 改變 redux 內的 city、url
+* 初始化 redux 內的 skipNum和scenicCardList
 
 ### 偵測 Url 更新
-![](https://i.imgur.com/yYhHSNz.png)
+![](https://i.imgur.com/k2TXyFG.png)
 
 利用 axios 取得遠端資料
-存入 redux 內( 若與前次城市相同，則累加併入array內 )
+apiAddData() 存入data到 redux 內( 若與前次城市相同，則累加併入array內 )
 以利 Modal 再被點擊時能找尋到更詳盡資料
 
 若 axios 取回的資料為空陣列，則 isGone 設為true
 RegionList.jsx 的下方將會出現提醒使用者資料已全部加載完畢
 
-
-
 ### 滾動到底部刷新
 src > components > helpers > js > detectScroll.js
-![](https://i.imgur.com/ZMV2S5y.png)
+![](https://i.imgur.com/eeNrG5e.png)
+
 在 window 上掛載 addEventListener 監聽滾動，並在達到頁面底部時改變 redux 內的 url
