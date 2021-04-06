@@ -4,10 +4,11 @@ import { useDispatch, useSelector } from "react-redux"
 
 import cityName from "../../assets/json/CH-EN_TW_CITY.json"
 import { Dropdown } from "bootstrap"
-function Navbar() {
-  const dispatch = useDispatch()
+
+const Navbar = React.memo(() => {
   let [btn, setBtn] = useState([])
   const city = useSelector((state) => state.city)
+  // console.log("Navbar")
   useEffect(() => {
     let btnArray = []
     let cityArr = Object.keys(cityName)
@@ -62,21 +63,9 @@ function Navbar() {
               </ul>
             </div>
           </ul>
-          {/* <form className="d-flex">
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button className="btn btn-outline-success" type="submit">
-              Search
-            </button>
-          </form> */}
         </div>
       </div>
     </nav>
   )
-}
-
+})
 export default Navbar

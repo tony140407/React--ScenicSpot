@@ -1,16 +1,28 @@
-import React from "react"
+import React, { useMemo } from "react"
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
 import { ScenicCardFactory } from "./helpers/templateFactory/scenicCardFactory"
 
 import CardModal from "./CardModal"
-function RegionList() {
+const RegionList = React.memo(() => {
+  // console.log("list")
+  // const paramsCityName = useMemo(() => ({ cityName: "" }), [])
+  const paramsCityName = (paramsCityName) => useMemo(() => paramsCityName, [])
   return (
     <div className="bg-light py-5">
       <CardModal />
 
       <Switch>
-        <Route key="otherCity" path="/scenicSpot/:cityName" component={ScenicCardFactory} />
+        <Route
+          key="otherCity"
+          path="/scenicSpot/:cityName"
+          component={(routerProps) => (
+            <ScenicCardFactory cityName={paramsCityName(routerProps.match.params.cityName)} />
+          )}
+        />
         <Route key="index" path="/scenicSpot" component={ScenicCardFactory} />
+
+        {/* <Route key="otherCity" path="/scenicSpot/:cityName" component={ScenicCardFactory} /> */}
+
         <Route
           key="firstPage"
           path="/"
@@ -24,6 +36,6 @@ function RegionList() {
       </Switch>
     </div>
   )
-}
+})
 
 export default RegionList
