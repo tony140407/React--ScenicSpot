@@ -10,7 +10,6 @@ const cardModal = React.memo(() => {
   useEffect(() => {
     if (modalDataIndex === undefined) return
     setScenicCardData(scenicSpots[modalDataIndex])
-    console.log(scenicSpots[modalDataIndex])
   }, [modalDataIndex])
   return (
     <div>
@@ -69,6 +68,5 @@ const cardModal = React.memo(() => {
     </div>
   )
 })
-// function cardModal() {}
 
 export default cardModal

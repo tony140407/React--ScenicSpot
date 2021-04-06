@@ -3,18 +3,17 @@ import { useLocation } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import ScenicSpotCard from "../../ScenicSpotCard"
 import apiDataProcess from "../js/apiDataProcess"
-import { changeCity, changePreCity, setUrl, apiAddData } from "../../../redux/actions/themeAction"
+import {
+  changeCityToInitAllState,
+  changePreCity,
+  apiAddData,
+} from "../../../redux/actions/themeAction"
 import axiosGetData from "../js/axiosGetData"
 
 export const ScenicCardFactory = React.memo(() => {
   const dispatch = useDispatch()
-  let [scenicCards, setScenicCards] = useState([])
   let [isGone, setIsGone] = useState(false)
-  const url = useSelector((state) => state.url)
-  const preCity = useSelector((state) => state.preCity)
-  const city = useSelector((state) => state.city)
-  const skipNum = useSelector((state) => state.skipNum)
-
+  const { url, preCity, city, skipNum, scenicSpots } = useSelector((state) => state)
   // router 改變 也改變city
   const location = useLocation()
   const path = location.pathname // '/scenicSpot' or '/scenicSpot/:cityName'
@@ -23,19 +22,33 @@ export const ScenicCardFactory = React.memo(() => {
   useEffect(() => {
     if (!cityName) {
       if (preCity == "" && city == "") {
-        dispatch(setUrl()) // 第一次init
-        return
+        return // 第一次init
       }
-      dispatch(changeCity(""))
-      dispatch(setUrl())
+      dispatch(changeCityToInitAllState(""))
       return
     }
     // 新選擇一個城市
-    dispatch(changeCity(cityName))
-    dispatch(setUrl())
+    dispatch(changeCityToInitAllState(cityName))
   }, [cityName])
 
-  function templateToList(data) {
+  useEffect(async () => {
+    if (url == "") return
+    let data = await axiosGetData(url)
+    if (!data.length) {
+      setIsGone(true)
+      return
+    }
+
+    if (preCity != city) {
+      dispatch(apiAddData(data))
+      dispatch(changePreCity())
+    } else {
+      dispatch(apiAddData(data))
+    }
+  }, [url])
+
+  const TemplateToList = React.memo((props) => {
+    const { data } = props
     let liList = []
     data.forEach((item, index) => {
       const { description, tags, town, img } = apiDataProcess(item, index)
@@ -53,29 +66,13 @@ export const ScenicCardFactory = React.memo(() => {
       ) //regionsData={item} 逞成各屬性 如 NAME ID...
     })
     return liList
-  }
-
-  useEffect(async () => {
-    if (url == "") return
-    let data = await axiosGetData(url)
-    if (!data.length) {
-      setIsGone(true)
-      return
-    }
-    const elements = templateToList(data)
-    if (preCity != city) {
-      setScenicCards(elements)
-      dispatch(apiAddData(data))
-      dispatch(changePreCity())
-    } else {
-      setScenicCards(scenicCards.concat(elements))
-      dispatch(apiAddData(data))
-    }
-  }, [url])
+  })
 
   return (
     <section className="container">
-      <ul className="ticketCard-area row g-0 list-unstyled">{scenicCards}</ul>
+      <ul className="ticketCard-area row g-0 list-unstyled">
+        <TemplateToList data={scenicSpots} />
+      </ul>
       {isGone && <p className="h1 text-center my-5 py-5">Gone. It's all gone.</p>}
     </section>
   )

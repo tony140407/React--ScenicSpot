@@ -8,7 +8,11 @@ export const detectScroll = () => {
   // 偵測是否到頁面底部
   useEffect(() => {
     const onScroll = (e) => {
-      setIsBottom(e.target.documentElement.getBoundingClientRect().bottom <= window.innerHeight)
+      if (e.target.documentElement.getBoundingClientRect().bottom < 500) return // 換頁時 RegionList 尚未更新
+      const conditionIsBottom =
+        e.target.documentElement.getBoundingClientRect().bottom <= window.innerHeight
+
+      setIsBottom(conditionIsBottom)
     }
     window.addEventListener("scroll", onScroll)
 

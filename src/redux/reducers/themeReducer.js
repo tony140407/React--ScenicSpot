@@ -3,7 +3,7 @@ const initialState = {
   skipNum: 0,
   preCity: "",
   city: "",
-  url: ``,
+  url: `https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot?$top=30&$skip=0&$format=JSON`,
   modalDataIndex: undefined,
 }
 
@@ -32,12 +32,22 @@ const reducer = (state = initialState, action) => {
         ...state,
         preCity: state.city,
       }
-    case "CHANGE_CITY":
+    case "CHANGE_CITY_TO_INIT_ALL_STATE":
+      let url
+      if (!action.city) {
+        url = `https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot?$top=30&$skip=${0}&$format=JSON`
+      }
+
+      url = `https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/${
+        action.city
+      }?$top=30&$skip=${0}&$format=JSON`
+
       return {
         ...state,
+        url: url,
         scenicSpots: [],
         skipNum: 0,
-        city: action.payload,
+        city: action.city,
       }
     case "SET_URL":
       if (state.city) {

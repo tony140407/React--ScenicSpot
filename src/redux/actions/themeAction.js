@@ -14,10 +14,10 @@ export const changePreCity = () => {
     type: "CHANGE_PRE_CITY",
   }
 }
-export const changeCity = (payload) => {
+export const changeCityToInitAllState = (city) => {
   return {
-    type: "CHANGE_CITY",
-    payload,
+    type: "CHANGE_CITY_TO_INIT_ALL_STATE",
+    city,
   }
 }
 export const setUrl = () => {
