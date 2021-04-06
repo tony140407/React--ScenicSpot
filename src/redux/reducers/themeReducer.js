@@ -22,7 +22,7 @@ const reducer = (state = initialState, action) => {
         scenicSpots: data,
       }
     case "ADD_SKIP_NUM":
-      console.log(`skip改變~~ ${state.skipNum + 30}`)
+      // console.log(`skip改變~~ ${state.skipNum + 30}`)
       return {
         ...state,
         skipNum: state.skipNum + 30,

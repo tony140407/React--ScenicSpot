@@ -6,8 +6,6 @@ import { changeCity, changePreCity, setUrl, apiAddData } from "../../../redux/ac
 import axiosGetData from "../js/axiosGetData"
 
 export const ScenicCardFactory = React.memo((props) => {
-  console.log("factory")
-  console.log(props)
   const dispatch = useDispatch()
   let [scenicCards, setScenicCards] = useState([])
   let [isGone, setIsGone] = useState(false)
@@ -17,8 +15,7 @@ export const ScenicCardFactory = React.memo((props) => {
   const skipNum = useSelector((state) => state.skipNum)
 
   // router 改變 也改變city
-  const { cityName } = props
-  // const { cityName } = props.match.params
+  const { cityName } = props.match.params
   useEffect(() => {
     if (cityName == city) return // 重複點選
     if (!cityName) {
