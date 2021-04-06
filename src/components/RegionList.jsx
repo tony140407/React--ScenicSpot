@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useMemo, useCallback } from "react"
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
 import { ScenicCardFactory } from "./helpers/templateFactory/scenicCardFactory"
 
@@ -9,8 +9,8 @@ const RegionList = React.memo(() => {
       <CardModal />
 
       <Switch>
-        <Route key="otherCity" path="/scenicSpot/:cityName" component={ScenicCardFactory} />
-        <Route key="index" path="/scenicSpot" component={ScenicCardFactory} />
+        <Route key="index" path="/scenicSpot/:cityName" render={() => <ScenicCardFactory />} />
+        <Route key="index" path="/scenicSpot" render={() => <ScenicCardFactory />} />
         <Route
           key="firstPage"
           path="/"
@@ -20,7 +20,6 @@ const RegionList = React.memo(() => {
             )
           }}
         />
-        {/* index放下面，以防換成 city 時 仍是index */}
       </Switch>
     </div>
   )

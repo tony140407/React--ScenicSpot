@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux"
 import replaceImg from "../assets/img/replaceImg.jpg"
 
 const cardModal = React.memo(() => {
-  // console.log("modal")
   const scenicSpots = useSelector((state) => state.scenicSpots)
   const modalDataIndex = useSelector((state) => state.modalDataIndex)
   let [scenicCardData, setScenicCardData] = useState({ Name: "" })

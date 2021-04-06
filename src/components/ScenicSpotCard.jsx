@@ -1,7 +1,7 @@
 import React from "react"
 import { useDispatch } from "react-redux"
 import { callModalData } from "../redux/actions/themeAction"
-function ScenicSpotCard(props) {
+const ScenicSpotCard = React.memo((props) => {
   const dispatch = useDispatch()
   let tagElements = []
   props.tag.forEach((eachTag, index) => {
@@ -69,6 +69,7 @@ function ScenicSpotCard(props) {
       </div>
     </li>
   )
-}
+})
+// function ScenicSpotCard(props) {}
 
 export default ScenicSpotCard
