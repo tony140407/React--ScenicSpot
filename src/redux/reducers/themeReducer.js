@@ -34,7 +34,7 @@ const reducer = (state = initialState, action) => {
       }
     case "CHANGE_CITY_TO_INIT_ALL_STATE":
       let url
-      if (!action.city) {
+      if (!action.city || action.city == " ") {
         url = `https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot?$top=30&$skip=${0}&$format=JSON`
       }
 

@@ -15,17 +15,33 @@ const Navbar = React.memo(() => {
 
     cityArr.forEach((eachCity) => {
       let enCityName = cityName[eachCity]
-      btnArray.push(
-        <li key={eachCity}>
-          <Link
-            to={`/scenicSpot/${enCityName}`}
-            className={"dropdown-item " + (city == enCityName ? "active" : "")}
-            href="#"
-          >
-            {eachCity}
-          </Link>
-        </li>
-      )
+      let component
+      if (enCityName == " " || !enCityName) {
+        component = (
+          <li key={eachCity}>
+            <Link
+              to="/React--ScenicSpot/"
+              className={"dropdown-item " + (city == enCityName ? "active" : "")}
+              href="#"
+            >
+              {eachCity}
+            </Link>
+          </li>
+        )
+      } else {
+        component = (
+          <li key={eachCity}>
+            <Link
+              to={enCityName}
+              className={"dropdown-item " + (city == enCityName ? "active" : "")}
+              href="#"
+            >
+              {eachCity}
+            </Link>
+          </li>
+        )
+      }
+      btnArray.push(component)
     })
     setBtn(btnArray)
   }, [city])

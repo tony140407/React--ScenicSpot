@@ -9,14 +9,15 @@ const RegionList = React.memo(() => {
       <CardModal />
 
       <Switch>
-        <Route key="index" path="/scenicSpot/:cityName" render={() => <ScenicCardFactory />} />
-        <Route key="index" path="/scenicSpot" render={() => <ScenicCardFactory />} />
+        <Route key="index" path=":cityName" render={() => <ScenicCardFactory />} />
+        {/* <Route key="index" path="scenicSpot" render={() => <ScenicCardFactory />} /> */}
         <Route
           key="firstPage"
           path="/"
           component={() => {
             return (
-              <p className="text-center">請點選右上按鈕 或 網址列後方加上 /scenicSpot 做切換</p>
+              <ScenicCardFactory />
+              // <p className="text-center">請點選右上按鈕 或 網址列後方加上 /scenicSpot 做切換</p>
             )
           }}
         />

@@ -18,7 +18,8 @@ export const ScenicCardFactory = React.memo(() => {
   const location = useLocation()
   const path = location.pathname // '/scenicSpot' or '/scenicSpot/:cityName'
   const pathArray = path.split("/") // ['', 'scenicSpot'] or ['', 'scenicSpot', cityName]
-  const cityName = pathArray[2] ? pathArray[2] : ""
+  const cityName = pathArray[pathArray.length - 1]
+
   useEffect(() => {
     if (!cityName) {
       if (preCity == "" && city == "") {

@@ -2,7 +2,7 @@
 
 ## Demo
 
-https://tony140407.github.io/React--ScenicSpot/scenicSpot/
+https://tony140407.github.io/React--ScenicSpot/
 
 ## 簡介
 
