@@ -10,8 +10,7 @@ export const detectScroll = () => {
     const onScroll = (e) => {
       if (e.target.documentElement.getBoundingClientRect().bottom < 500) return // 換頁時 RegionList 尚未更新
       const conditionIsBottom =
-        e.target.documentElement.getBoundingClientRect().bottom <= window.innerHeight
-
+        e.target.documentElement.getBoundingClientRect().bottom <= (window.innerHeight +5);
       setIsBottom(conditionIsBottom)
     }
     window.addEventListener("scroll", onScroll)
